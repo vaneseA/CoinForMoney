@@ -1,4 +1,4 @@
-package com.example.coinformoney.view
+package com.example.coinformoney.view.splash
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/SplashFragment1"
-        android:name="com.example.coinformoney.view.SplashFragment1"
+        android:name="com.example.coinformoney.view.splash.SplashFragment1"
         android:label="fragment_splash1"
         tools:layout="@layout/fragment_splash1">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/SplashFragment2"
-        android:name="com.example.coinformoney.view.SplashFragment2"
+        android:name="com.example.coinformoney.view.splash.SplashFragment2"
         android:label="fragment_splash2"
         tools:layout="@layout/fragment_splash2"/>
 </navigation>

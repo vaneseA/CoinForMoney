@@ -1,4 +1,4 @@
-package com.example.coinformoney.view
+package com.example.coinformoney.view.splash
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
