@@ -14,10 +14,12 @@ import com.example.coinformoney.datamodel.CurrentPriceResult
 class SelectRVAdapter(val context: Context, val coinPriceList: List<CurrentPriceResult>) :
     RecyclerView.Adapter<SelectRVAdapter.ViewHolder>() {
 
+    val selectedCoinList = ArrayList<String>()
+
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val coinName: TextView = view.findViewById(R.id.coinName)
         val coinPriceUpDown: TextView = view.findViewById(R.id.coinPriceUpDown)
-        val likeImage : ImageView = view.findViewById(R.id.likeBtn)
+        val likeImage: ImageView = view.findViewById(R.id.likeBtn)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,13 +32,38 @@ class SelectRVAdapter(val context: Context, val coinPriceList: List<CurrentPrice
 
         holder.coinName.text = coinPriceList[position].coinName
         val fluctate_24H = coinPriceList[position].coinInfo.fluctate_24H
-        if (fluctate_24H.contains("-")){
+        if (fluctate_24H.contains("-")) {
             holder.coinPriceUpDown.text = "하락입니다."
             holder.coinPriceUpDown.setTextColor(Color.parseColor("#114fed"))
-        }else {
+        } else {
             holder.coinPriceUpDown.text = "상승입니다."
             holder.coinPriceUpDown.setTextColor(Color.parseColor("#ed2e11"))
         }
+
+        val likeImage = holder.likeImage
+        val currentCoin = coinPriceList[position].coinName
+
+        //view를 그려줄 때
+        if(selectedCoinList.contains(currentCoin)){
+            likeImage.setImageResource(R.drawable.like_red)
+        }else{
+            likeImage.setImageResource(R.drawable.like_grey)
+        }
+
+        likeImage.setOnClickListener {
+
+
+            if (selectedCoinList.contains(currentCoin)) {
+                //포함하면
+                selectedCoinList.remove(currentCoin)
+                likeImage.setImageResource(R.drawable.like_grey)
+            } else {
+                //포함하지않으면
+                selectedCoinList.add(currentCoin)
+                likeImage.setImageResource(R.drawable.like_red)
+            }
+        }
+
 
     }
 
