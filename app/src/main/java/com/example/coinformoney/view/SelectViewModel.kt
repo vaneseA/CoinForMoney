@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.coinformoney.dataStore.MyDataStore
 import com.example.coinformoney.datamodel.CurrentPrice
 import com.example.coinformoney.datamodel.CurrentPriceResult
 import com.example.coinformoney.network.model.CurrentPriceList
@@ -44,5 +45,9 @@ class SelectViewModel : ViewModel() {
             }
         }
         _currentPriceResult.value = currentPriceResultList
+    }
+
+    fun setUpFirstFlag() = viewModelScope.launch {
+        MyDataStore().setupFirstData()
     }
 }
