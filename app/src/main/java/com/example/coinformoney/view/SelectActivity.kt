@@ -1,10 +1,12 @@
 package com.example.coinformoney.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.coinformoney.MainActivity
 import com.example.coinformoney.R
 import com.example.coinformoney.databinding.ActivitySelectBinding
 import com.example.coinformoney.databinding.FragmentSplash1Binding
@@ -34,5 +36,10 @@ class SelectActivity : AppCompatActivity() {
 
             Timber.d(it.toString())
         })
+
+        binding.laterTextArea.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
