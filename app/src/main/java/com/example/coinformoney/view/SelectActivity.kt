@@ -38,12 +38,20 @@ class SelectActivity : AppCompatActivity() {
         })
         viewModel.setUpFirstFlag()
         binding.laterTextArea.setOnClickListener {
+
             viewModel.setUpFirstFlag()
             viewModel.saveSelectedCoinList(selectRVAdapter.selectedCoinList)
 
 
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
         }
+
+        viewModel.save.observe(this, Observer {
+            if(it.equals("done")){
+
+
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        })
     }
 }

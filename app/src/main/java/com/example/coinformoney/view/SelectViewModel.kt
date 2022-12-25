@@ -14,6 +14,7 @@ import com.example.coinformoney.repository.NetWorkRepository
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 class SelectViewModel : ViewModel() {
@@ -27,6 +28,10 @@ class SelectViewModel : ViewModel() {
     private val _currentPriceResult = MutableLiveData<List<CurrentPriceResult>>()
     val currentPriceResult: LiveData<List<CurrentPriceResult>>
         get() = _currentPriceResult
+
+    private val _saved = MutableLiveData<String>()
+    val save: LiveData<String>
+        get() = _saved
 
 
     fun getCurrentCoinList() = viewModelScope.launch {
@@ -62,6 +67,7 @@ class SelectViewModel : ViewModel() {
             //1.전체 코인 데이터를 가져와서
             for (coin in currentPriceResultList) {
 
+                //2.내가 선택한 코인인지 아닌지 구분
                 //포함하면 true /포함하지 않으면 FALSE
                 val selected = selectedCoinList.contains(coin.coinName)
 
@@ -83,14 +89,15 @@ class SelectViewModel : ViewModel() {
 
 
                 )
-                interestCoinEntity.let {
-                    dbRepository.insertInterestCoinData(it
 
-                    )
+                //3.저장
+                interestCoinEntity.let {
+                    dbRepository.insertInterestCoinData(it)
                 }
             }
-            //2.내가 선택한 코인인지 아닌지 구분
+            withContext(Dispatchers.Main) {
+                _saved.value = "done"
 
-            //3.저장
+            }
         }
 }
