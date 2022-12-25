@@ -7,21 +7,26 @@ import androidx.lifecycle.viewModelScope
 import com.example.coinformoney.dataStore.MyDataStore
 import com.example.coinformoney.datamodel.CurrentPrice
 import com.example.coinformoney.datamodel.CurrentPriceResult
+import com.example.coinformoney.db.entity.InterestCoinEntity
 import com.example.coinformoney.network.model.CurrentPriceList
+import com.example.coinformoney.repository.DBRepository
 import com.example.coinformoney.repository.NetWorkRepository
 import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class SelectViewModel : ViewModel() {
 
     private val netWorkRepository = NetWorkRepository()
+    private val dbRepository = DBRepository()
 
     private lateinit var currentPriceResultList: ArrayList<CurrentPriceResult>
 
-//데이터변화를 관찰 LiveData
+    //데이터변화를 관찰 LiveData
     private val _currentPriceResult = MutableLiveData<List<CurrentPriceResult>>()
-    val currentPriceResult : LiveData<List<CurrentPriceResult>>
-    get() = _currentPriceResult
+    val currentPriceResult: LiveData<List<CurrentPriceResult>>
+        get() = _currentPriceResult
 
 
     fun getCurrentCoinList() = viewModelScope.launch {
@@ -50,4 +55,42 @@ class SelectViewModel : ViewModel() {
     fun setUpFirstFlag() = viewModelScope.launch {
         MyDataStore().setupFirstData()
     }
+
+    //DB에 데이터 저장
+    fun saveSelectedCoinList(selectedCoinList: ArrayList<String>) =
+        viewModelScope.launch(Dispatchers.IO) {
+            //1.전체 코인 데이터를 가져와서
+            for (coin in currentPriceResultList) {
+
+                //포함하면 true /포함하지 않으면 FALSE
+                val selected = selectedCoinList.contains(coin.coinName)
+
+                val interestCoinEntity = InterestCoinEntity(
+                    0,
+                    coin.coinName,
+                    coin.coinInfo.opening_price,
+                    coin.coinInfo.closing_price,
+                    coin.coinInfo.min_price,
+                    coin.coinInfo.max_price,
+                    coin.coinInfo.units_traded,
+                    coin.coinInfo.acc_trade_value,
+                    coin.coinInfo.prev_closing_price,
+                    coin.coinInfo.units_traded_24H,
+                    coin.coinInfo.acc_trade_value_24H,
+                    coin.coinInfo.fluctate_24H,
+                    coin.coinInfo.flutate_rate_24H,
+                    selected
+
+
+                )
+                interestCoinEntity.let {
+                    dbRepository.insertInterestCoinData(it
+
+                    )
+                }
+            }
+            //2.내가 선택한 코인인지 아닌지 구분
+
+            //3.저장
+        }
 }

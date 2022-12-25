@@ -11,7 +11,7 @@ class DBRepository {
     //InterestCoin
 
 
-    //전체 코인 데이터 가져오
+    //전체 코인 데이터 가져오기
     fun getAllInterestCoinDate() = db.interestCoinDAO().getAllData()
 
     //코인 데이터 넣기
