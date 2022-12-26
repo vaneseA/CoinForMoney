@@ -10,27 +10,34 @@ import com.example.coinformoney.db.entity.InterestCoinEntity
 
 @Database(entities = [InterestCoinEntity::class], version = 1)
 abstract class CoinPriceDatabase : RoomDatabase() {
-    abstract fun interestCoinDAO(): InterestCoinDAO
+
+    abstract fun interestCoinDAO() : InterestCoinDAO
 
     companion object {
 
         @Volatile
-        private var INSTANCE: CoinPriceDatabase? = null
+        private var INSTANCE : CoinPriceDatabase? = null
 
         fun getDatabase(
-            context: Context
-        ): CoinPriceDatabase {
+            context : Context
+        ) : CoinPriceDatabase {
+
             return INSTANCE ?: synchronized(this) {
-                val intance = Room.databaseBuilder(
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     CoinPriceDatabase::class.java,
                     "coin_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()
-                INSTANCE = intance
-                intance
+                INSTANCE = instance
+                instance
             }
+
+
         }
+
     }
+
+
 }

@@ -16,4 +16,5 @@ object RetrofitInstance {
     fun getInstance() : Retrofit {
         return client
     }
+
 }

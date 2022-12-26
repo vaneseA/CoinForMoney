@@ -13,5 +13,6 @@
     <fragment
         android:id="@+id/priceChangeFragment"
         android:name="com.example.coinformoney.view.main.PriceChangeFragment"
-        android:label="PriceChangeFragment" />
+        android:label="fragment_price_change"
+        tools:layout="@layout/fragment_price_change" />
 </navigation>

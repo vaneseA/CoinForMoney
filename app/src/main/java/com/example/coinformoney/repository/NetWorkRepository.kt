@@ -5,7 +5,8 @@ import com.example.coinformoney.network.RetrofitInstance
 
 class NetWorkRepository {
 
-    private val  client = RetrofitInstance.getInstance().create(Api::class.java)
+    private val client = RetrofitInstance.getInstance().create(Api::class.java)
 
     suspend fun getCurrentCoinList() = client.getCurrentCoinList()
+
 }

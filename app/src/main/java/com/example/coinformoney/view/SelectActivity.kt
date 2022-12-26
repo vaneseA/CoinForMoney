@@ -12,15 +12,16 @@ import com.example.coinformoney.view.adapter.SelectRVAdapter
 import timber.log.Timber
 
 class SelectActivity : AppCompatActivity() {
-    // (전역변수) 바인딩 객체 선언
-    private lateinit var binding: ActivitySelectBinding
 
+    private lateinit var binding : ActivitySelectBinding
 
-    private val viewModel: SelectViewModel by viewModels()
+    private val viewModel : SelectViewModel by viewModels()
+    // FAQ
 
     private lateinit var selectRVAdapter: SelectRVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivitySelectBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -29,27 +30,30 @@ class SelectActivity : AppCompatActivity() {
         viewModel.currentPriceResult.observe(this, Observer {
 
             selectRVAdapter = SelectRVAdapter(this, it)
+
             binding.coinListRV.adapter = selectRVAdapter
             binding.coinListRV.layoutManager = LinearLayoutManager(this)
 
             Timber.d(it.toString())
         })
-        viewModel.setUpFirstFlag()
+
         binding.laterTextArea.setOnClickListener {
 
             viewModel.setUpFirstFlag()
             viewModel.saveSelectedCoinList(selectRVAdapter.selectedCoinList)
 
 
+
         }
 
         viewModel.save.observe(this, Observer {
-            if(it.equals("done")){
-
+            if(it.equals("done")) {
 
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+
             }
         })
+
     }
 }

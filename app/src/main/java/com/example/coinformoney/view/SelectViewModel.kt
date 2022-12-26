@@ -84,7 +84,7 @@ class SelectViewModel : ViewModel() {
                     coin.coinInfo.units_traded_24H,
                     coin.coinInfo.acc_trade_value_24H,
                     coin.coinInfo.fluctate_24H,
-                    coin.coinInfo.flutate_rate_24H,
+                    coin.coinInfo.fluctate_rate_24H,
                     selected
 
 
