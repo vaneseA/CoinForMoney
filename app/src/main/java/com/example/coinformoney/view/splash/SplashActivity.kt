@@ -7,9 +7,8 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.Observer
-import com.example.coinformoney.MainActivity
-import com.example.coinformoney.R
 import com.example.coinformoney.databinding.ActivitySplashBinding
+import com.example.coinformoney.view.main.MainActivity
 
 
 class SplashActivity : AppCompatActivity() {

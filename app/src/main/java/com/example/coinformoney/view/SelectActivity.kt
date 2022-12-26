@@ -6,10 +6,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.coinformoney.MainActivity
-import com.example.coinformoney.R
+import com.example.coinformoney.view.main.MainActivity
 import com.example.coinformoney.databinding.ActivitySelectBinding
-import com.example.coinformoney.databinding.FragmentSplash1Binding
 import com.example.coinformoney.view.adapter.SelectRVAdapter
 import timber.log.Timber
 

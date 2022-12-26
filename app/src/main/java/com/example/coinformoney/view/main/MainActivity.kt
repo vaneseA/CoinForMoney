@@ -1,7 +1,8 @@
-package com.example.coinformoney
+package com.example.coinformoney.view.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.coinformoney.R
 
 
 class MainActivity : AppCompatActivity() {

@@ -3,21 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/SplashFragment1">
+    app:startDestination="@id/coinListFragment">
 
     <fragment
-        android:id="@+id/SplashFragment1"
-        android:name="com.example.coinformoney.view.splash.SplashFragment1"
-        android:label="fragment_splash1"
-        tools:layout="@layout/fragment_splash1">
-        <action
-            android:id="@+id/action_SplashFragment1_to_SplashFragment2"
-            app:destination="@id/SplashFragment2" />
-    </fragment>
-
+        android:id="@+id/coinListFragment"
+        android:name="com.example.coinformoney.view.main.CoinListFragment"
+        android:label="fragment_coin_list"
+        tools:layout="@layout/fragment_coin_list" />
     <fragment
-        android:id="@+id/SplashFragment2"
-        android:name="com.example.coinformoney.view.splash.SplashFragment2"
-        android:label="fragment_splash2"
-        tools:layout="@layout/fragment_splash2"/>
+        android:id="@+id/priceChangeFragment"
+        android:name="com.example.coinformoney.view.main.PriceChangeFragment"
+        android:label="PriceChangeFragment" />
 </navigation>

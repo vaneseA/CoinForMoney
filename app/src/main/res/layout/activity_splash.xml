@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         android:visibility="invisible"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/main_nav" />
+        app:navGraph="@navigation/intro_nav" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
