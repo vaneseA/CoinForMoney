@@ -17,9 +17,9 @@ import timber.log.Timber
 
 class CoinListFragment : Fragment() {
 
-    private val viewModel : MainViewModel by activityViewModels()
+    private val viewModel: MainViewModel by activityViewModels()
 
-    private var _binding : FragmentCoinListBinding? = null
+    private var _binding: FragmentCoinListBinding? = null
     private val binding get() = _binding!!
 
     private val selectedList = ArrayList<InterestCoinEntity>()
@@ -52,9 +52,9 @@ class CoinListFragment : Fragment() {
             selectedList.clear()
             unSelectedList.clear()
 
-            for(item in it) {
+            for (item in it) {
 
-                if(item.selected) {
+                if (item.selected) {
                     selectedList.add(item)
                 } else {
                     unSelectedList.add(item)
@@ -71,7 +71,7 @@ class CoinListFragment : Fragment() {
 
     }
 
-    private fun setSelectedListRV(){
+    private fun setSelectedListRV() {
 
         val selectedRVAdapter = CoinListRVAdapter(requireContext(), selectedList)
         binding.selectedCoinRV.adapter = selectedRVAdapter
