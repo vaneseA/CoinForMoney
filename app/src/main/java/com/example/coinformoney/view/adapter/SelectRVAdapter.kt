@@ -37,10 +37,10 @@ class SelectRVAdapter(val context : Context, val coinPriceList : List<CurrentPri
         val fluctate_24H = coinPriceList[position].coinInfo.fluctate_24H
 
         if(fluctate_24H.contains("-")) {
-            holder.coinPriceUpDown.text = "하락입니다."
+            holder.coinPriceUpDown.text = "하락세입니다."
             holder.coinPriceUpDown.setTextColor(Color.parseColor("#114fed"))
         } else {
-            holder.coinPriceUpDown.text = "상승입니다."
+            holder.coinPriceUpDown.text = "상승세입니다."
             holder.coinPriceUpDown.setTextColor(Color.parseColor("#ed2e11"))
         }
 
@@ -54,7 +54,7 @@ class SelectRVAdapter(val context : Context, val coinPriceList : List<CurrentPri
             likeImage.setImageResource(R.drawable.like_grey)
         }
 
-        likeImage.setOnClickListener {
+        holder.itemView.setOnClickListener {
 
             Timber.d(currentCoin)
 

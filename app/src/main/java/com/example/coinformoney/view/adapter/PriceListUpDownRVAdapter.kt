@@ -32,10 +32,10 @@ class PriceListUpDownRVAdapter(val context : Context, val dataSet : List<UpDownD
         holder.coinName.text = dataSet[position].coinName
 
         if(dataSet[position].upDownPrice.contains("-")){
-            holder.coinPriceUpDown.text = "하락"
+            holder.coinPriceUpDown.text = "하락세"
             holder.coinPriceUpDown.setTextColor(Color.parseColor("#114fed"))
         } else {
-            holder.coinPriceUpDown.text = "상승"
+            holder.coinPriceUpDown.text = "상승세"
             holder.coinPriceUpDown.setTextColor(Color.parseColor("#ed2e11"))
         }
 

@@ -26,7 +26,7 @@ class CoinListRVAdapter(val context: Context, val dataSet: List<InterestCoinEnti
 
         val coinName = view.findViewById<TextView>(R.id.coinName)
         val likeBtn = view.findViewById<ImageView>(R.id.likeBtn)
-
+        val coinPriceUpDown = view.findViewById<TextView>(R.id.coinPriceUpDown)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -40,12 +40,19 @@ class CoinListRVAdapter(val context: Context, val dataSet: List<InterestCoinEnti
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.itemView.findViewById<ImageView>(R.id.likeBtn).setOnClickListener { v ->
+        holder.itemView.setOnClickListener { v ->
             itemClick?.onClick(v, position)
         }
+        val fluctate_24H = dataSet[position].fluctate_24H
 
+        if(fluctate_24H.contains("-")) {
+            holder.coinPriceUpDown.text = "하락세입니다."
+            holder.coinPriceUpDown.setTextColor(Color.parseColor("#114fed"))
+        } else {
+            holder.coinPriceUpDown.text = "상승세입니다."
+            holder.coinPriceUpDown.setTextColor(Color.parseColor("#ed2e11"))
+        }
         holder.coinName.text = dataSet[position].coin_name
-
         val selected = dataSet[position].selected
         if (selected) {
             holder.likeBtn.setImageResource(R.drawable.like_red)

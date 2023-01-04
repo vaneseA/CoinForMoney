@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="좋아요 누른 코인"
+                android:text="관심 있는 코인"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"

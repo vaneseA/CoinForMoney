@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface InterestCoinDAO {
 
     //getAllData
-    //데이터의 변경 사항을 감지하기 좋음
+    //데이터의 변경 사항을 감지하기 좋다
 
     @Query("SELECT * FROM interest_coin_table")
     fun getAllData(): Flow<List<InterestCoinEntity>>

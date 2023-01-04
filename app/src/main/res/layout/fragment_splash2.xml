@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/jalnan"
-        android:text="우리도\n\n알아보자"
+        android:text="놓치기 전에\n\n관심있는 코인 등록!"
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="30dp"
