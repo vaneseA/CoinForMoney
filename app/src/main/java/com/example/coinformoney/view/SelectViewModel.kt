@@ -8,14 +8,12 @@ import com.example.coinformoney.dataStore.MyDataStore
 import com.example.coinformoney.datamodel.CurrentPrice
 import com.example.coinformoney.datamodel.CurrentPriceResult
 import com.example.coinformoney.db.entity.InterestCoinEntity
-import com.example.coinformoney.network.model.CurrentPriceList
 import com.example.coinformoney.repository.DBRepository
 import com.example.coinformoney.repository.NetWorkRepository
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 
 class SelectViewModel : ViewModel() {
 
