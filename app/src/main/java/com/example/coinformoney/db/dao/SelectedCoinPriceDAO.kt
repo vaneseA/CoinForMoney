@@ -22,5 +22,5 @@ interface SelectedCoinPriceDAO {
     @Query("SELECT * FROM selected_coin_price_table WHERE coinName = :coinName")
     fun getOneCoinData(coinName : String) : List<SelectedCoinPriceEntity>
 
-
+//
 }
